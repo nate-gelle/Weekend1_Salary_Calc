@@ -1,3 +1,33 @@
-#test {
-  color: blue;
+#firstNameIn {
+  display: inline-block;
+}
+
+#lastNameIn {
+  display: inline-block;
+}
+
+#idIn {
+  display: inline-block;
+}
+
+#titlIn {
+  display: inline-block;
+}
+
+#salaryIn {
+  display: inline-block;
+}
+
+
+#employeesOut, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
+
+th {
+    text-align: left;
 }
