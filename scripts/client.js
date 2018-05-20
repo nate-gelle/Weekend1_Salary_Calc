@@ -19,7 +19,7 @@ function readyNow(){
   $('#submitButton').on('click', addEmployee);
 }
 
-function  addEmployee(){
+function addEmployee(){
   console.log('in addEmployee');
   // get user input
   // create a new employee
@@ -30,6 +30,7 @@ function  addEmployee(){
   console.log(employees);
   // update DOM
   displayEmployees();
+  monthlyCost();
 } // end addEmployee
 
 function displayEmployees(){
@@ -41,11 +42,12 @@ function displayEmployees(){
   // call a function to display headers which is defined later
   displayHeaders();
   // loop through array
+  let i = 0;
   for(employee of employees){
   // display table on DOM
-    let i;
     i++;
-    let outputString = '<tr class="removable" id='+i+'><td>' + employee.firstName + '</td>';
+    let outputString = '<tr class="removable" id= row' + i + '>';
+      outputString += '<td>' + employee.firstName + '</td>';
       outputString += '<td>' + employee.lastName + '</td>';
       outputString += '<td>' + employee.id + '</td>';
       outputString += '<td>' + employee.title + '</td>';
@@ -72,8 +74,20 @@ function displayHeaders(){
 }
 
 // define function to get monthly cost from employee.salary(s)
-
-// display monthly cost on Dom if salary column populated
+function monthlyCost(){
+  let salaryCostSum = 0;
+  for (employee of employees){
+    salaryCostSum += (employee.salary/12);
+  }
+  console.log(salaryCostSum);
+  // append to DOM
+  $('#totalDisplay').empty();
+  $('#totalDisplay').append('Total Monthly: $' + (salaryCostSum.toFixed(2)));
+  if (salryCostSum > 20000){
+    // figure out how to change id of #total to #red
+    //$('#total').attr('id','red');
+  }
+}
 
 // if monthly cost over 20,000, red background
 

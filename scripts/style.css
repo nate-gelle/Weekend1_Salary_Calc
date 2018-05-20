@@ -31,3 +31,7 @@ th, td {
 th {
     text-align: left;
 }
+
+#red {
+  background-color: red;
+}
