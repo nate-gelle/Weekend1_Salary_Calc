@@ -37,11 +37,11 @@ th {
     text-align: left;
 }
 
-#total {
+#totalDisplay {
   float: right;
 }
 
-#red {
+.red {
   float: right;
   width: auto;
   background-color: red;

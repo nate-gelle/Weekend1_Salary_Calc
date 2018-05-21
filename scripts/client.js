@@ -114,12 +114,11 @@ function monthlyCost(){
   // append to DOM
   $('#totalDisplay').empty();
   $('#totalDisplay').append('Total Monthly: $' + (salaryCostSum.toFixed(2)));
-  salaryCostSum = parseInt(salaryCostSum);
+  salaryCostSum = parseFloat(salaryCostSum);
   // if monthly cost over 20,000, red background
-  if (salaryCostSum >= 20000){
-    $('#total').attr("id", "red");
-  }
-  else {
-    $('#red').attr("id", "total");
+  if (salaryCostSum > 20000){
+    $('#totalDisplay').addClass("red");
+  } else {
+    $('#totalDisplay').removeClass("red");
   }
 }
