@@ -59,17 +59,24 @@ function displayEmployees(){
       outputString += '<td>' + employee.id + '</td>';
       outputString += '<td>' + employee.title + '</td>';
       outputString += '<td>' + employee.salary + '</td>';
-      outputString += '<td><button id="removeRowButton">Delete</button></td>';
+      outputString += '<td><button class="removeRowButton">Delete</button></td>';
       outputString += '</tr>';
     console.log(outputString);
     i++;
     display.append(outputString)
   }
-  $('#removeRowButton').on('click', function(){
-    $(this).parents('tr').first().remove();
+  // create click handler for delete button
+  $('.removeRowButton').on('click', function(){
     console.log('remove row clicked');
+    // remove parent row of delete button
+    $(this).parents('tr').first().remove();
+    // create a varible to connect row id and class index value within array
+    index = $(this).parents('tr').attr('id');
+    // splice out class by index
+    employees.splice(index, 1);
+    console.log(index);
+    monthlyCost();
   });
-
 }
 
 // define function to display headers
@@ -113,3 +120,7 @@ function monthlyCost(){
     $('#total').attr("id", "red");
   }
 }
+
+// function subtractSalary(){
+//   employees.splice(index, 1);
+// }
