@@ -38,7 +38,7 @@ function addEmployee(){
   // call monthly cost calculation function
   monthlyCost();
   // target delete button on click event and call function to remove row
-  $('.removeRowButton').on('click', removeRow);
+  // $('.removeRowButton').on('click', removeRow);
 } // end addEmployee
 
 function displayEmployees(){
