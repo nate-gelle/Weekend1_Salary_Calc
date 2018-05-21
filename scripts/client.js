@@ -51,7 +51,7 @@ function displayEmployees(){
   displayHeaders();
   // loop through array
   let i = 0;
-  for(employee of employees){
+  for(let employee of employees){
   // display table on DOM
     let outputString = '<tr class="removable" id=' + i + '>';
       outputString += '<td>' + employee.firstName + '</td>';
@@ -107,7 +107,7 @@ function clearFields(){
 // define function to get monthly cost from employee.salary(s)
 function monthlyCost(){
   let salaryCostSum = 0;
-  for (employee of employees){
+  for (let employee of employees){
     salaryCostSum += (employee.salary/12);
   }
   console.log(salaryCostSum);
