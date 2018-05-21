@@ -29,7 +29,11 @@ function addEmployee(){
   employees.push(newEmployee);
   console.log(employees);
   // update DOM
+  // call function to display array of employees
   displayEmployees();
+  // call clear input fields function
+  clearFields();
+  // call monthly cost calculation function
   monthlyCost();
 } // end addEmployee
 
@@ -73,6 +77,16 @@ function displayHeaders(){
   headerDisplay.append(headerString);
 }
 
+// define function to clear input clearFields
+function clearFields(){
+  console.log('in clearFields');
+  $('#firstNameIn').val('');
+  $('#lastNameIn').val('');
+  $('#idIn').val('');
+  $('#titleIn').val('');
+  $('#salaryIn').val('');
+}
+
 // define function to get monthly cost from employee.salary(s)
 function monthlyCost(){
   let salaryCostSum = 0;
@@ -83,9 +97,10 @@ function monthlyCost(){
   // append to DOM
   $('#totalDisplay').empty();
   $('#totalDisplay').append('Total Monthly: $' + (salaryCostSum.toFixed(2)));
-  if (salryCostSum > 20000){
+  salaryCostSum = parseInt(salaryCostSum);
+  if ( salaryCostSum > 20000){
     // figure out how to change id of #total to #red
-    //$('#total').attr('id','red');
+    $('#total').attr("id", "red");
   }
 }
 
