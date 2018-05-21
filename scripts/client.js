@@ -28,6 +28,8 @@ function addEmployee(){
   // push new employee into array
   employees.push(newEmployee);
   console.log(employees);
+  // let employeeData = employees.data();
+  // console.log(employeeData);
   // update DOM
   // call function to display array of employees
   displayEmployees();
@@ -35,12 +37,14 @@ function addEmployee(){
   clearFields();
   // call monthly cost calculation function
   monthlyCost();
+  // target delete button on click event and call function to remove row
+  $('.removeRowButton').on('click', removeRow);
 } // end addEmployee
 
 function displayEmployees(){
   console.log('in displayEmployees');
   // target output element and save in a variable
-  let display = $('#employeesOut');
+  let display = $('#tableBody');
   // empty output element
   display.empty();
   // call a function to display headers which is defined later
@@ -50,13 +54,13 @@ function displayEmployees(){
   for(employee of employees){
   // display table on DOM
     i++;
-    let outputString = '<tr class="removable" id= row' + i + '>';
+    let outputString = '<tr class="removable" id=' + i + '>';
       outputString += '<td>' + employee.firstName + '</td>';
       outputString += '<td>' + employee.lastName + '</td>';
       outputString += '<td>' + employee.id + '</td>';
       outputString += '<td>' + employee.title + '</td>';
       outputString += '<td>' + employee.salary + '</td>';
-      outputString += '<td><button id="removeRowButton">Delete</button></td>';
+      outputString += '<td><button class="removeRowButton">Delete</button></td>';
       outputString += '</tr>';
     console.log(outputString);
     display.append (outputString)
@@ -65,7 +69,7 @@ function displayEmployees(){
 
 // define function to display headers
 function displayHeaders(){
-  let headerDisplay = $('#employeesOut')
+  let headerDisplay = $('#tableHeader')
   let headerString = '<tr>';
     headerString += '<th>First Name</th>';
     headerString += '<th>Last Name</th>';
@@ -74,6 +78,7 @@ function displayHeaders(){
     headerString += '<th>Salary</th>';
     headerString += '</tr>';
   console.log(headerString);
+  headerDisplay.empty();
   headerDisplay.append(headerString);
 }
 
@@ -98,15 +103,15 @@ function monthlyCost(){
   $('#totalDisplay').empty();
   $('#totalDisplay').append('Total Monthly: $' + (salaryCostSum.toFixed(2)));
   salaryCostSum = parseInt(salaryCostSum);
-  if ( salaryCostSum > 20000){
-    // figure out how to change id of #total to #red
+  // if monthly cost over 20,000, red background
+  if ( salaryCostSum >= 20000){
     $('#total').attr("id", "red");
   }
 }
 
-// if monthly cost over 20,000, red background
-
-// $('#removeRowButton').on('click', removeRow());
+// define function to remove row upon click event
 // function removeRow(){
 //   console.log('in remove row');
+//   i = $('(this.tr.id)'.val());
+//   removeClass(i);
 // }

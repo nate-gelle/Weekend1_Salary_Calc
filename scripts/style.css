@@ -37,6 +37,15 @@ th {
     text-align: left;
 }
 
+#total {
+  float: right;
+}
+
 #red {
+  float: right;
+  width: auto;
   background-color: red;
+  color: black;
+  text-align: center;
+  padding: 10px;
 }
