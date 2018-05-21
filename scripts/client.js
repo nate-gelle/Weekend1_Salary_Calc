@@ -53,18 +53,23 @@ function displayEmployees(){
   let i = 0;
   for(employee of employees){
   // display table on DOM
-    i++;
     let outputString = '<tr class="removable" id=' + i + '>';
       outputString += '<td>' + employee.firstName + '</td>';
       outputString += '<td>' + employee.lastName + '</td>';
       outputString += '<td>' + employee.id + '</td>';
       outputString += '<td>' + employee.title + '</td>';
       outputString += '<td>' + employee.salary + '</td>';
-      outputString += '<td><button class="removeRowButton">Delete</button></td>';
+      outputString += '<td><button id="removeRowButton">Delete</button></td>';
       outputString += '</tr>';
     console.log(outputString);
-    display.append (outputString)
+    i++;
+    display.append(outputString)
   }
+  $('#removeRowButton').on('click', function(){
+    $(this).parents('tr').first().remove();
+    console.log('remove row clicked');
+  });
+
 }
 
 // define function to display headers
@@ -108,10 +113,3 @@ function monthlyCost(){
     $('#total').attr("id", "red");
   }
 }
-
-// define function to remove row upon click event
-// function removeRow(){
-//   console.log('in remove row');
-//   i = $('(this.tr.id)'.val());
-//   removeClass(i);
-// }
